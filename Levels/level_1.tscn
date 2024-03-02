@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bytk2vojdx1bc"]
+
+[ext_resource type="Texture2D" uid="uid://dl1a5h8nu8fne" path="res://KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Samples/dungeon_remastered_sample1.png" id="1_syqgv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l52le"]
+sky_top_color = Color(0.588235, 0.819608, 0.996078, 1)
+sky_horizon_color = Color(0.579412, 0.693137, 0.755882, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.579412, 0.693137, 0.755882, 1)
+
+[sub_resource type="Sky" id="Sky_ge7m0"]
+sky_material = SubResource("ProceduralSkyMaterial_l52le")
+
+[sub_resource type="Environment" id="Environment_dbxm8"]
+background_mode = 2
+sky = SubResource("Sky_ge7m0")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmdlx"]
+albedo_texture = ExtResource("1_syqgv")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0blbq"]
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m4r5g"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[node name="Level_1" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707107, -0.707107, -3.09086e-08, 0, -4.37114e-08, 1, -0.707107, 0.707107, 3.09086e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dbxm8")
+
+[node name="Map" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_gmdlx")
+mesh = SubResource("PlaneMesh_0blbq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Map"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_m4r5g")
