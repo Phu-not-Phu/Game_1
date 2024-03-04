@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="MovementState" load_steps=2 format=3 uid="uid://t21kccw2uj0r"]
 
-[ext_resource type="Script" path="res://Player/movement_state.gd" id="1_xwc8k"]
+[ext_resource type="Script" path="res://Player/movement_state.gd" id="1_2rogy"]
 
 [resource]
-script = ExtResource("1_xwc8k")
+script = ExtResource("1_2rogy")
 name = "sprint"
 id = 3
 movement_speed = 12.0
