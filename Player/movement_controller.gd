@@ -29,7 +29,7 @@ func _physics_process(delta):
 
 func _jump(jump_state: JumpState):
 	velocity.y = 2 * jump_state.jump_height / jump_state.apex_duration
-	jump_gravity = velocity.y / jump_state.apex_duration
+	jump_gravity = 1.5 * velocity.y / jump_state.apex_duration
 
 func _on_set_movement_state(_movement_state: MovementState):
 	speed = _movement_state.movement_speed
