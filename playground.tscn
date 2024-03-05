@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://uqmnwvuwn4fr"]
+[gd_scene load_steps=50 format=3 uid="uid://uqmnwvuwn4fr"]
 
 [ext_resource type="Texture2D" uid="uid://ba0d8gr756jen" path="res://Kenney_prototype-textures/Vector/texture_01.svg" id="2_4f6eg"]
 [ext_resource type="PackedScene" uid="uid://bjlrar317ov72" path="res://Player/player.tscn" id="2_jmj6l"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dqlxgdjht16wn" path="res://KayKit_Trainning_Bootcamp/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope_Half.gltf" id="13_l23ws"]
 [ext_resource type="PackedScene" uid="uid://dfaamhy2j76u0" path="res://KayKit_Trainning_Bootcamp/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Stairs.gltf" id="14_ig1xt"]
 [ext_resource type="PackedScene" uid="uid://bc0dlrepmstb2" path="res://KayKit_Trainning_Bootcamp/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Stairs_Half.gltf" id="15_nrecp"]
+[ext_resource type="MeshLibrary" uid="uid://dce7t33mi2vic" path="res://KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/stuffs.tres" id="16_6f62u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rxgfn"]
 sky_top_color = Color(0.588235, 0.819608, 0.996078, 1)
@@ -318,6 +319,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8608, 0, 9.50721)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Stairs_Half2/Primitive_Stairs_Half/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0qr1q")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("16_6f62u")
+cell_size = Vector3(1, 0.001, 2)
+data = {
+"cells": PackedInt32Array(65533, 65530, 149, 65533, 65527, 150, 65535, 65529, 1441869, 65535, 65530, 1441869, 65534, 65527, 72, 65534, 65530, 72)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [editable path="Cube_Prototype_Large_A2"]
 [editable path="Cube_Prototype_Small2"]
