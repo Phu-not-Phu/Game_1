@@ -305,7 +305,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.68472, 0, 23.7228)
 shape = SubResource("ConcavePolygonShape3D_02jiy")
 
 [node name="Primitive_Stairs2" parent="." instance=ExtResource("14_ig1xt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21501, 9.53674e-07, -2.66182)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2.80286)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Stairs2/Primitive_Stairs" index="0"]
 

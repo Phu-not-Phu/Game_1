@@ -11,6 +11,11 @@ signal set_movement_direction(_movement_direction: Vector3)
 var air_jump_count: int = 0
 var movement_direction: Vector3
 
+#CoyoteTime
+@export var _jump_frame_grace = 5
+var _cur_frame = 0
+var _last_frame_was_on_floor = -_jump_frame_grace - 1
+
 func _input(event):
 	if event is InputEventKey:
 		if event.as_text() == "W" || event.as_text() == "S" || event.as_text() == "A" || event.as_text() == "D" || event.as_text() == "Shift" || event.as_text() == "Space" || event.as_text() == "Ctrl":
@@ -47,7 +52,7 @@ func _physics_process(delta):
 	if is_movement_ongoing():
 		set_movement_direction.emit(movement_direction)
 		
-	if is_on_floor():
+	if is_on_floor() or (_cur_frame - _last_frame_was_on_floor <= _jump_frame_grace):
 		air_jump_count = 0
 	elif air_jump_count == 0:
 		air_jump_count = 1
