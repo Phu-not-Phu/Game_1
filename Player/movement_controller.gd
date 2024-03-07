@@ -27,13 +27,13 @@ var _last_xz_vel : Vector3 = Vector3(1, 0, 1)
 func _physics_process(delta):
 	velocity.x = speed * direction.normalized().x
 	velocity.z = speed * direction.normalized().z
-	
+		
 	if not player.is_on_floor():
 		if velocity.y >= 0:
 			velocity.y -= jump_gravity * delta
 		else:
 			velocity.y -= fall_gravity * delta
-	
+		
 	player.velocity = player.velocity.lerp(velocity, acceleration * delta)
 	_rotate_step_up_seperation_ray()
 	player.move_and_slide()
@@ -110,3 +110,6 @@ func _rotate_step_up_seperation_ray():
 	_step_up_sepertaion_ray_f.disabled = any_too_steep
 	_step_up_sepertaion_ray_l.disabled = any_too_steep
 	_step_up_sepertaion_ray_r.disabled = any_too_steep
+
+func _on_set_attack_state(_attack_state: AttackState):
+	pass

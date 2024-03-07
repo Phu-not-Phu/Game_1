@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AttackState" load_steps=2 format=3 uid="uid://nlol1mb41c0y"]
+
+[ext_resource type="Script" path="res://Player/attack_state.gd" id="1_mofel"]
+
+[resource]
+script = ExtResource("1_mofel")
+name = "normal_attack"
+camera_fov = 70.0
+animation_speed = 0.5

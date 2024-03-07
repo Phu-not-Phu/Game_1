@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AttackState" load_steps=2 format=3 uid="uid://c5osdqgq1byaf"]
+
+[ext_resource type="Script" path="res://Player/attack_state.gd" id="1_ml0bh"]
+
+[resource]
+script = ExtResource("1_ml0bh")
+name = "dash_attack"
+camera_fov = 85.0
+animation_speed = 0.5
