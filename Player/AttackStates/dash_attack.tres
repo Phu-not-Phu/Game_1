@@ -7,3 +7,4 @@ script = ExtResource("1_ml0bh")
 name = "dash_attack"
 camera_fov = 85.0
 animation_speed = 0.5
+damage_deal = 20.0

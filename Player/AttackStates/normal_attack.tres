@@ -7,3 +7,4 @@ script = ExtResource("1_mofel")
 name = "normal_attack"
 camera_fov = 70.0
 animation_speed = 0.5
+damage_deal = 10.0

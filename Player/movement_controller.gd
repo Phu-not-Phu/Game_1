@@ -11,6 +11,10 @@ var acceleration: float
 var speed: float
 var cam_rotation: float = 0
 
+#AttackDamage
+var attack_damage: float = 0
+var damage_done: float = 0
+
 #WalkingStairs
 @onready var stairs_below_raycast = $"../StairsBelowRayCast3D"
 @onready var _initial_seperation_ray_dist = abs($"../StepUpSeperationRay_F".position.z)
@@ -23,6 +27,10 @@ var cam_rotation: float = 0
 var _was_on_floor_last_frame = false
 var _snapped_to_stairs_last_frame = false
 var _last_xz_vel : Vector3 = Vector3(1, 0, 1)
+
+#AttackState
+@onready var hitbox_lefthand = $"../Model/Barbarian/Rig/Skeleton3D/1H_Axe_Offhand/1H_Axe_Offhand/Hitbox_lefthand"
+@onready var hitbox_righthand = $"../Model/Barbarian/Rig/Skeleton3D/1H_Axe/1H_Axe/Hitbox_righthand"
 
 func _physics_process(delta):
 	velocity.x = speed * direction.normalized().x
@@ -112,4 +120,29 @@ func _rotate_step_up_seperation_ray():
 	_step_up_sepertaion_ray_r.disabled = any_too_steep
 
 func _on_set_attack_state(_attack_state: AttackState):
-	pass
+	hitbox_lefthand.monitoring = true
+	hitbox_righthand.monitoring = true
+	hitbox_lefthand.monitorable = true
+	hitbox_righthand.monitorable = true
+	attack_damage = _attack_state.damage_deal
+	$"../Timer".start()
+#
+func _on_timer_timeout():
+	hitbox_lefthand.monitoring = false
+	hitbox_righthand.monitoring = false
+	hitbox_lefthand.monitorable = false
+	hitbox_righthand.monitorable = false
+	print("out")
+	damage_done = 0
+
+func _on_hitbox_lefthand_area_entered(area):
+	if area.is_in_group("enemy"):
+		damage_done += attack_damage
+		print(damage_done)
+		print("left-hit")
+
+func _on_hitbox_righthand_area_entered(area):
+	if area.is_in_group("enemy"):
+		damage_done += attack_damage
+		print(damage_done)
+		print("right-hit")

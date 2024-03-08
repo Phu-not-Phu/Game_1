@@ -13,8 +13,6 @@ signal set_attack_state(attack_state: AttackState)
 var air_jump_count: int = 0
 var movement_direction: Vector3
 
-var on_attacking = false
-
 #CoyoteTime
 @export var _jump_frame_grace = 5
 var _cur_frame = 0
@@ -36,7 +34,6 @@ func _input(event):
 				get_node("Status/" + event.as_text()).color = Color("ffffff")
 	
 	if is_on_floor() and event.is_action("attacks"):
-		on_attacking = true
 		if Input.is_action_pressed("normal_attack"):
 			if Input.is_action_pressed("sprint"):
 				set_attack_state.emit(attatck_states["dash_attack"])
@@ -45,7 +42,7 @@ func _input(event):
 		elif Input.is_action_pressed("dash_attack"):
 			set_attack_state.emit(attatck_states["dash_attack"])
 	
-	if event.is_action("movement") and on_attacking == false:
+	if event.is_action("movement"):
 		if event.is_action("attacks"):
 			movement_direction.x = 0 
 			movement_direction.z = 0
@@ -102,7 +99,4 @@ func _physics_process(delta):
 
 func is_movement_ongoing() -> bool:
 	return abs(movement_direction.x) > 0 or abs(movement_direction.z) > 0
-
-func _finishing_attack():
-	on_attacking = false
 
